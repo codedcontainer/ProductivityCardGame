@@ -4,7 +4,6 @@ class Timing:
     def hours(self, minutes):
         if(minutes < 60):
             return 0
-        print(minutes)
         return self.hours_to_whole_number(minutes/60)
    
     def hours_to_whole_number(self, decimal_hours):

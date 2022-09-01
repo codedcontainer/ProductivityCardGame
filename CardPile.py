@@ -42,9 +42,6 @@ class CardPile:
     
     def print_sum_value(self):
         _sum_card_values = self.sum_card_values()
-        print(_sum_card_values)
-        ##print('sum total of cards: ' + str(_sum_card_values))
         self.print_cards()
-
         timing = Timing()
         timing.print_time(_sum_card_values, self.name)

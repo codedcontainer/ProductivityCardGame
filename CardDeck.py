@@ -1,5 +1,4 @@
 import random
-import re
 from Card import Card
 
 class CardDeck:
@@ -15,7 +14,6 @@ class CardDeck:
     def create(self):
         for value in self.values:
             for suit in self.suits:
-                #self.cards.append(str(value) + suit)
                 card = Card(value, suit)
                 self.cards.append(card)
 
@@ -23,14 +21,10 @@ class CardDeck:
         for joker in range(1,amount+1):
             card = Card(0, "j")
             self.cards.append(card)
-            #self.cards.append('0j')
     
     def discard_joker(self):
-        regex_j = re.search("j",self.cards[0].suit)
-        if(regex_j is not None):
+        if(len(self.cards) > 0):
             self.cards.pop(0)
-        else:
-            print("card "+ self.cards[0] + "is not a valid card")
 
     def shuffle(self,cards):
         card_count = len(cards)
@@ -41,6 +35,11 @@ class CardDeck:
             random_card = cards[random_int]
             cards[index] = random_card 
             cards[random_int] = value
+
+    def appendPile(self, pile):
+        if(len(pile.cards) > 0):
+            self.cards += pile
+            pile.empty()
 
     def draw(self):
         card = self.cards[0]

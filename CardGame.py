@@ -1,7 +1,7 @@
 from CardDeck import CardDeck
 from CardPile import CardPile
 from DiscardPile import DiscardPile
-import readline
+from Console import Console
 
 class CardGame:
     def __init__(self):
@@ -28,21 +28,25 @@ class CardGame:
             card = self.deck.draw()
             if(card.suit == "j"):
                 self.deck.discard_joker()
-                print(self.pileMap['discard'])
-                self.pileMap['discard'].move_all_to_draw()
+                self.deck.appendPile(self.pileMap['discard'])
             else:
                 self.suitToPileMap[card.suit].cards.append(card)
         else:
             print("cannot draw any more cards; deck is empty")
 
+    def printPiles(self):
+        for pile in self.piles:
+            pile.print_sum_value()
+
+
     def draw_to_pile_target(self, pile, time_target_min):
         if(len(self.deck.cards) == 0 ):
             print("Cannot draw any more cards from deck. The draw pile is empty")
-            pile.print_sum_value()
+            self.printPiles()
             self.prompt_restart()
         elif(time_target_min <= 0 and len(pile.cards) > 0):
-            print("Target reached")
-            pile.print_sum_value()
+            print("Target reached!")
+            self.printPiles()
         else:
             drawn_card = self.deck.draw()            
             pile.add(drawn_card)   
@@ -54,14 +58,14 @@ class CardGame:
             self.restart()
 
     def prompt_draw_single(self):
-        readline.clear_history()
         isDraw = input("Would you like to draw a single card? ")
         if(isDraw.lower() == "n"):
+            Console.clear() 
             self.prompt_draw_target()
-        else:            
+        else:  
+            Console.clear()          
             self.draw()
-            self.pileMap['work'].print_sum_value()
-            self.pileMap['fun'].print_sum_value()
+            self.printPiles()
             self.start()
 
     def prompt_draw_target(self):
@@ -88,7 +92,7 @@ class CardGame:
             self.start()
 
     def start(self):
-       self.prompt_draw_single()
+        self.prompt_draw_single()
 
     def restart(self):
         self.initialize()
