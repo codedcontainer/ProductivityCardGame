@@ -4,7 +4,7 @@ from Card import Card
 
 class CardDeck:
     suits = ['h', 'd', 'c', 's']
-    values = [str(val) for val in range(1,14)]
+    values = [val for val in range(1,14)]
     cards = []
 
     def __init__(self):
@@ -15,18 +15,18 @@ class CardDeck:
     def create(self):
         for value in self.values:
             for suit in self.suits:
-                self.cards.append(str(value) + suit)
-                #card = Card(value, suit)
-                #self.cards.append(card)
+                #self.cards.append(str(value) + suit)
+                card = Card(value, suit)
+                self.cards.append(card)
 
     def add_joker(self, amount):
         for joker in range(1,amount+1):
-            # card = Card(0, "j")
-            # self.cards.append(card)
-            self.cards.append('0j')
+            card = Card(0, "j")
+            self.cards.append(card)
+            #self.cards.append('0j')
     
     def discard_joker(self):
-        regex_j = re.search("j",self.cards[0])
+        regex_j = re.search("j",self.cards[0].suit)
         if(regex_j is not None):
             self.cards.pop(0)
         else:

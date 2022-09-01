@@ -1,8 +1,7 @@
 from CardDeck import CardDeck
 from CardPile import CardPile
 from DiscardPile import DiscardPile
-from Card import Card
-import re
+import readline
 
 class CardGame:
     def __init__(self):
@@ -27,13 +26,12 @@ class CardGame:
     def draw(self):
         if(len(self.deck.cards) > 0):
             card = self.deck.draw()
-            if("j" in card):
+            if(card.suit == "j"):
                 self.deck.discard_joker()
                 print(self.pileMap['discard'])
                 self.pileMap['discard'].move_all_to_draw()
             else:
-                suit = re.search("\w$",card)
-                self.suitToPileMap[suit.group()].cards.append(card)
+                self.suitToPileMap[card.suit].cards.append(card)
         else:
             print("cannot draw any more cards; deck is empty")
 
@@ -48,8 +46,7 @@ class CardGame:
         else:
             drawn_card = self.deck.draw()            
             pile.add(drawn_card)   
-            cardValue = Card.GetValue(drawn_card)
-            self.draw_to_pile_target(pile, time_target_min - int(cardValue))
+            self.draw_to_pile_target(pile, time_target_min - int(drawn_card.value))
 
     def prompt_restart(self):
         restart = input("Would you like to restart the app (y/n)? ")
@@ -57,6 +54,7 @@ class CardGame:
             self.restart()
 
     def prompt_draw_single(self):
+        readline.clear_history()
         isDraw = input("Would you like to draw a single card? ")
         if(isDraw.lower() == "n"):
             self.prompt_draw_target()

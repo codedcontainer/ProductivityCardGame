@@ -12,3 +12,7 @@ class Card:
     @staticmethod
     def GetValue(cardStr):
         return re.search("\d+", cardStr).group()
+
+    @staticmethod
+    def AsString(card):
+        return str(card.value) + card.suit
