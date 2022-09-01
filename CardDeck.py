@@ -1,3 +1,5 @@
+"""Creates a deck of playing cards cards with actions"""
+
 import random
 from Card import Card
 
