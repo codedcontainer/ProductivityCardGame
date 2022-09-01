@@ -28,7 +28,8 @@ class CardGame:
             card = self.deck.draw()
             if(card.suit == "j"):
                 self.deck.discard_joker()
-                self.deck.appendPile(self.pileMap['discard'])
+                # todo: fix
+                self.deck.append_pile(self.pileMap['discard'])
             else:
                 self.suitToPileMap[card.suit].cards.append(card)
         else:

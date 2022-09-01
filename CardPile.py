@@ -2,6 +2,7 @@ from Timing import Timing
 from Card import Card
 
 class CardPile:
+    "Describes a pile of playing cards"
     def __init__(self, name):
         self.name = name
         self.cards = []
@@ -26,7 +27,7 @@ class CardPile:
 
     def add_to_deck(self, deck):
         if(self.cards is not None):
-            deck = self.deck + self.cards
+            deck = deck + self.cards
             self.cards = []
         return deck  
 
