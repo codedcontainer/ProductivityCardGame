@@ -39,7 +39,7 @@ class CardPile:
 
     def print_cards(self):
         cards = [Card.AsString(card) for card in self.cards]
-        print(self.name + " pile: ", cards)
+        return ",".join(cards)
     
     def print_sum_value(self):
         _sum_card_values = self.sum_card_values()

@@ -1,4 +1,7 @@
 from tkinter import *
+from Commands import Commands
+from CardGame import CardGame
+
 
 root = Tk()
 root.title("Productivity Card Game")
@@ -7,6 +10,8 @@ class Widgets:
     pile_names = ["Work", "Fun"]
 
     def __init__(self):
+        self.cg = CardGame()
+
         self.alert()
         self.work_pile()
         self.fun_pile()        
@@ -21,16 +26,16 @@ class Widgets:
         alert_label.pack()
 
     def work_pile(self):
-        wp_label = Label(root, text="Work pile: ")
-        wp_label.pack()
+        root.wp_label = Label(root, text="Work pile: ")
+        root.wp_label.pack()
 
     def fun_pile(self):
-        fp_label = Label(root, text="Fun pile: ")
-        fp_label.pack()
+        root.fp_label = Label(root, text="Fun pile: ")
+        root.fp_label.pack()
 
     def discard_pile(self):
-        fp_label = Label(root, text="Discard pile:")
-        fp_label.pack()
+        root.dp_label = Label(root, text="Discard pile:")
+        root.dp_label.pack()
 
     def draw_to_target(self):
         dtt_lb = Label(root, text="Target time(min):")
@@ -64,7 +69,7 @@ class Widgets:
         rft_btn.pack()
 
     def draw_card(self):
-        draw_btn = Button(root, text="Draw a card")
+        draw_btn = Button(root, text="Draw a card", command=lambda: Commands.draw(root, self.cg))
         draw_btn.pack()
 
     def reset_game(self):
