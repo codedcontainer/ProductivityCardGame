@@ -25,11 +25,10 @@ class CardPile:
     def sort_descending(self):
         return sorted(self.cards, key=lambda cards: cards.value, reverse = True)
 
-    def add_to_deck(self, deck):
+    def add_to_discard(self, discard):
         if(self.cards is not None):
-            deck = deck + self.cards
+            discard.cards = discard.cards + self.cards
             self.cards = []
-        return deck  
 
     def remove_many_minutes(self, minutes):
         cards = self.sort_descending()

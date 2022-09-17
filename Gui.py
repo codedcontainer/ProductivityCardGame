@@ -43,13 +43,13 @@ class Widgets:
         atd_lb.pack()
 
         atd_om_opts = self.pile_names
-        atd_om_var = StringVar()
-        atd_om_var.set(atd_om_opts[0])
+        root.atd_om_var = StringVar()
+        root.atd_om_var.set(atd_om_opts[0])
 
-        atd_om = OptionMenu(root, atd_om_var, *atd_om_opts)
+        atd_om = OptionMenu(root, root.atd_om_var, *atd_om_opts)
         atd_om.pack()
 
-        atd_btn = Button(root, text="Discard pile")
+        atd_btn = Button(root, text="Discard pile", command=lambda: Commands.discard_pile(root,self.cg ))
         atd_btn.pack()
 
     def draw_to_target(self):
