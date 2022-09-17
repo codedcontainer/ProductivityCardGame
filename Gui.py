@@ -7,13 +7,18 @@ class Widgets:
     pile_names = ["Work", "Fun"]
 
     def __init__(self):
+        self.alert()
         self.work_pile()
-        self.fun_pile()
+        self.fun_pile()        
         self.discard_pile()
         self.draw_to_target()
         self.remove_by_target()
         self.draw_card()
         self.reset_game()        
+
+    def alert(self):
+        alert_label = Label(root)
+        alert_label.pack()
 
     def work_pile(self):
         wp_label = Label(root, text="Work pile: ")
