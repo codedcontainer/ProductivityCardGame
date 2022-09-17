@@ -15,5 +15,4 @@ class Commands:
     def discard_pile(root, cg):
         pile = root.atd_om_var.get().lower()
         cg.pileMap[pile].add_to_discard(cg.pileMap['discard'])
-        print(cg.pileMap['discard'].cards)
         Commands.print_piles(root,cg)
