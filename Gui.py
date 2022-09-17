@@ -18,6 +18,7 @@ class Widgets:
         self.discard_pile()
         self.draw_to_target()
         self.remove_by_target()
+        self.add_to_discard()
         self.draw_card()
         self.reset_game()        
 
@@ -36,6 +37,20 @@ class Widgets:
     def discard_pile(self):
         root.dp_label = Label(root, text="Discard pile:")
         root.dp_label.pack()
+
+    def add_to_discard(self):
+        atd_lb = Label(root, text="Pile to discard:")
+        atd_lb.pack()
+
+        atd_om_opts = self.pile_names
+        atd_om_var = StringVar()
+        atd_om_var.set(atd_om_opts[0])
+
+        atd_om = OptionMenu(root, atd_om_var, *atd_om_opts)
+        atd_om.pack()
+
+        atd_btn = Button(root, text="Discard pile")
+        atd_btn.pack()
 
     def draw_to_target(self):
         dtt_lb = Label(root, text="Target time(min):")
