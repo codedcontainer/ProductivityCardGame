@@ -39,15 +39,15 @@ class CardGame:
         for pile in self.piles:
             pile.print_sum_value()
 
-
+    
     def draw_to_pile_target(self, pile, time_target_min):
+        pile_sum = pile.sum_card_values()
         if(len(self.deck.cards) == 0 ):
-            print("Cannot draw any more cards from deck. The draw pile is empty")
-            self.printPiles()
-            self.prompt_restart()
-        elif(time_target_min <= 0 and len(pile.cards) > 0):
-            print("Target reached!")
-            self.printPiles()
+            print("cannot draw any more")
+            return "Cannot draw any more cards from deck. The draw pile is empty"
+        elif( (time_target_min <= 0 and len(pile.cards) > 0 ) or pile_sum >= time_target_min ):
+            print('target reached')
+            return "Target reached!"
         else:
             drawn_card = self.deck.draw()            
             pile.add(drawn_card)   
