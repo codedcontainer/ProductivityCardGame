@@ -4,10 +4,12 @@ from DiscardPile import DiscardPile
 from Console import Console
 
 class CardGame:
+    "Productivity card game"
     def __init__(self):
         self.initialize()
 
     def initialize(self):
+        "Setup piles"
         self.deck = CardDeck()
         self.piles = [DiscardPile(), CardPile("work"), CardPile("fun")]
         self.pileMap = {}
@@ -24,11 +26,11 @@ class CardGame:
 
 
     def draw(self):
-        if(len(self.deck.cards) > 0):
+        "Draw a card"
+        if len(self.deck.cards) > 0:
             card = self.deck.draw()
-            if(card.suit == "j"):
+            if card.suit == "j" :
                 self.deck.discard_joker()
-                # todo: fix
                 self.deck.append_pile(self.pileMap['discard'])
             else:
                 self.suitToPileMap[card.suit].cards.append(card)
@@ -36,13 +38,14 @@ class CardGame:
             print("cannot draw any more cards; deck is empty")
 
     def printPiles(self):
+        "Print the the sum value of the piles"
         for pile in self.piles:
             pile.print_sum_value()
 
     
     def draw_to_pile_target(self, pile, time_target_min):
         pile_sum = pile.sum_card_values()
-        if(len(self.deck.cards) == 0 ):
+        if len(self.deck.cards) == 0 :
             print("cannot draw any more")
             return "Cannot draw any more cards from deck. The draw pile is empty"
         elif( (time_target_min <= 0 and len(pile.cards) > 0 ) or pile_sum >= time_target_min ):
@@ -54,13 +57,15 @@ class CardGame:
             self.draw_to_pile_target(pile, time_target_min - int(drawn_card.value))
 
     def prompt_restart(self):
+        "prompt to restart"
         restart = input("Would you like to restart the app (y/n)? ")
-        if(restart.lower() == "y"):
+        if restart.lower() == "y":
             self.restart()
 
     def prompt_draw_single(self):
+        "prompt to draw a single card"
         isDraw = input("Would you like to draw a single card? ")
-        if(isDraw.lower() == "n"):
+        if isDraw.lower() == "n":
             Console.clear() 
             self.prompt_draw_target()
         else:  
@@ -70,8 +75,9 @@ class CardGame:
             self.start()
 
     def prompt_draw_target(self):
+        "prompt to draw to a target value in minutes"
         isDrawtoTarget = input("Would you like to draw to a target (y/n)? ")
-        if(isDrawtoTarget.lower() == "y"):
+        if isDrawtoTarget.lower() == "y" :
             pileName = input("Pile to add (work/fun)? ")
             pile = self.pileMap[pileName]
             time_target_minutes = int(input("Time target in minutes: "))
@@ -84,8 +90,9 @@ class CardGame:
             self.remove_cards_target()
 
     def remove_cards_target(self):
+        "prompt to remove cards by target value in minutes"
         isRemoveByTime = input("Would you like to remove cards by time spent (y/n)? ")
-        if(isRemoveByTime.lower() == "y"):
+        if isRemoveByTime.lower() == "y" :
             pileName = input("Pile to discard cards (work/fun)?")
             pile = self.pileMap[pileName]
             time_target_minutes = int(input("Time spent in minutes: ")) 
@@ -93,8 +100,10 @@ class CardGame:
             self.start()
 
     def start(self):
+        "start game and begin prompts"
         self.prompt_draw_single()
 
     def restart(self):
+        "restart game"
         self.initialize()
         self.start()
