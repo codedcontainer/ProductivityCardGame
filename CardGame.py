@@ -3,7 +3,7 @@
 from CardDeck import CardDeck
 from CardPile import CardPile
 from DiscardPile import DiscardPile
-from Console import Console
+import Console
 
 class CardGame:
     "Card game"
@@ -50,8 +50,11 @@ class CardGame:
         if len(self.deck.cards) == 0 :
             print("cannot draw any more")
             return "Cannot draw any more cards from deck. The draw pile is empty"
-        if( (time_target_min <= 0 and len(pile.cards) > 0 ) or pile_sum >= time_target_min ):
-            print('target reached')
+        if time_target_min <= 0:
+            if len(pile.cards) > 0:
+                print('target reached')
+                return "Target reached!"
+        if pile_sum >= time_target_min:
             return "Target reached!"
 
         drawn_card = self.deck.draw()
