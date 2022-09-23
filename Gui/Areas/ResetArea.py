@@ -1,13 +1,7 @@
 "tkinter area to restart the game"
 from tkinter import Button
 
-class ResetArea():
+def ResetArea(root):
     "Display area: reset game to starting state"
-    def __init__(self, root):
-        self.root = root
-        self.reset_game()
-
-    def reset_game(self):
-        "Display area: restart game"
-        reset_btn = Button(self.root, text="Reset game")
-        reset_btn.grid(row=2, column=1)
+    reset_btn = Button(root, text="Reset game")
+    reset_btn.grid(row=2, column=1)

@@ -70,7 +70,7 @@ class CardGame:
         if isDraw.lower() == "n":
             Console.clear()
             self.prompt_draw_target()
-        else:  
+        else:
             Console.clear()
             self.draw()
             self.printPiles()

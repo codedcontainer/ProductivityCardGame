@@ -28,7 +28,7 @@ class Commands:
         "Draw to target value"
         target_time = int(root.dtt_tb.get())
         pile = root.dtt_om_var.get().lower()
-        pile = cg.pileMap[pile] 
+        pile = cg.pileMap[pile]
         dtpt_state = cg.draw_to_pile_target(pile, target_time)
         tk.messagebox.showinfo(title=None, message=dtpt_state)
         Commands.print_piles(root,cg)
