@@ -25,7 +25,7 @@ class DrawCardsArea():
         dtt_lf.grid(row=0, column=0, padx=10, pady=10)
 
         dtt_lb = Label(dtt_lf, text="Target time(min):")
-        dtt_lb.grid(row=1, column=0)
+        dtt_lb.grid(row=1, column=0, padx=5, pady=5)
         self.rook.dtt_tb = Entry(dtt_lf)
         self.rook.dtt_tb.grid(row=2, column=0)
 
@@ -34,8 +34,8 @@ class DrawCardsArea():
         self.rook.dtt_om_var.set(dtt_om_opts[0])
 
         dtt_om = OptionMenu(dtt_lf, self.rook.dtt_om_var, *dtt_om_opts)
-        dtt_om.grid(row=3, column=0)
+        dtt_om.grid(row=3, column=0, padx=5, pady=5)
 
         dtt_btn = Button(dtt_lf, text="Draw to target",
                          command=lambda: Commands.draw_to_target(self.rook, self.card_game))
-        dtt_btn.grid(row=4, column=0)
+        dtt_btn.grid(row=4, column=0, padx=5, pady=(10,5))
