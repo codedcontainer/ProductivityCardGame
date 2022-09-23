@@ -42,8 +42,8 @@ class CardGame:
         for pile in self.piles:
             pile.print_sum_value()
 
-    
     def draw_to_pile_target(self, pile, time_target_min):
+        "Draw cards to a target value in minutes"
         pile_sum = pile.sum_card_values()
         if len(self.deck.cards) == 0 :
             print("cannot draw any more")
@@ -66,10 +66,10 @@ class CardGame:
         "prompt to draw a single card"
         isDraw = input("Would you like to draw a single card? ")
         if isDraw.lower() == "n":
-            Console.clear() 
+            Console.clear()
             self.prompt_draw_target()
         else:  
-            Console.clear()          
+            Console.clear()
             self.draw()
             self.printPiles()
             self.start()
@@ -81,7 +81,7 @@ class CardGame:
             pileName = input("Pile to add (work/fun)? ")
             pile = self.pileMap[pileName]
             time_target_minutes = int(input("Time target in minutes: "))
-            if(pile.sum_card_values() > 0):
+            if pile.sum_card_values() > 0:
                 time_target_minutes = time_target_minutes - pile.sum_card_values()
 
             self.draw_to_pile_target(pile, time_target_minutes)  
@@ -95,7 +95,7 @@ class CardGame:
         if isRemoveByTime.lower() == "y" :
             pileName = input("Pile to discard cards (work/fun)?")
             pile = self.pileMap[pileName]
-            time_target_minutes = int(input("Time spent in minutes: ")) 
+            time_target_minutes = int(input("Time spent in minutes: "))
             pile.remove_many_minutes(time_target_minutes)
             self.start()
 

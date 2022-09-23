@@ -1,6 +1,7 @@
 import re
 
 class Card:
+    "Playing Card"
     def __init__(self, value, suit):
         self.suit = suit
         self.value = value

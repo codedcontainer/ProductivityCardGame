@@ -1,6 +1,7 @@
 import os
 
 class Console:
+    "Console actions"
     @staticmethod
     def clear():
         "clear all commands from the console window"
