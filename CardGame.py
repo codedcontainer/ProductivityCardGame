@@ -1,10 +1,12 @@
+"Productivity card game"
+
 from CardDeck import CardDeck
 from CardPile import CardPile
 from DiscardPile import DiscardPile
 from Console import Console
 
 class CardGame:
-    "Productivity card game"
+    "Card game"
     def __init__(self):
         self.initialize()
 
@@ -48,13 +50,13 @@ class CardGame:
         if len(self.deck.cards) == 0 :
             print("cannot draw any more")
             return "Cannot draw any more cards from deck. The draw pile is empty"
-        elif( (time_target_min <= 0 and len(pile.cards) > 0 ) or pile_sum >= time_target_min ):
+        if( (time_target_min <= 0 and len(pile.cards) > 0 ) or pile_sum >= time_target_min ):
             print('target reached')
             return "Target reached!"
-        else:
-            drawn_card = self.deck.draw()            
-            pile.add(drawn_card)   
-            self.draw_to_pile_target(pile, time_target_min - int(drawn_card.value))
+
+        drawn_card = self.deck.draw()
+        pile.add(drawn_card)
+        return self.draw_to_pile_target(pile, time_target_min - int(drawn_card.value))
 
     def prompt_restart(self):
         "prompt to restart"
@@ -84,7 +86,7 @@ class CardGame:
             if pile.sum_card_values() > 0:
                 time_target_minutes = time_target_minutes - pile.sum_card_values()
 
-            self.draw_to_pile_target(pile, time_target_minutes)  
+            self.draw_to_pile_target(pile, time_target_minutes)
             self.start()
         else:
             self.remove_cards_target()

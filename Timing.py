@@ -1,3 +1,4 @@
+"Handles numerical values of time values"
 import math
 
 class Timing:

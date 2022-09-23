@@ -1,3 +1,4 @@
+"Tests the card game"
 import unittest
 from CardGame import CardGame
 

@@ -1,3 +1,4 @@
+"Shows all areas for display in tkinter app"
 from Gui.Areas.PilesArea import PilesArea
 from Gui.Areas.DiscardCardsArea import DiscardCardsArea
 from Gui.Areas.DrawCardsArea import DrawCardsArea

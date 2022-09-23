@@ -1,3 +1,4 @@
+"Playing card"
 import re
 
 class Card:

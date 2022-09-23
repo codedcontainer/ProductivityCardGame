@@ -1,3 +1,4 @@
+"Inits tkinter gui window and starts card game"
 import sys
 from tkinter import Tk
 from Gui.Areas.DisplayAreas import DisplayAreas

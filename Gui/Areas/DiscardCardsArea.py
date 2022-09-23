@@ -1,3 +1,4 @@
+"tkinter gui area for discarding card actions"
 from tkinter import LabelFrame, Label,Button, StringVar,OptionMenu, Entry
 import sys
 sys.path.append("../../ProductivityCardGame")

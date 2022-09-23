@@ -1,3 +1,4 @@
+"Console or terminal helper functions"
 import os
 
 class Console:

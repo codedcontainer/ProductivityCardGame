@@ -1,3 +1,4 @@
+"tkinter area for drawing playing cards actions"
 from tkinter import LabelFrame, Label, StringVar, Entry,OptionMenu, Button
 from Commands import Commands
 

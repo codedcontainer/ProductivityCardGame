@@ -1,3 +1,4 @@
+"tkinter area to display all pile's cards and sums"
 from tkinter import LabelFrame, Label
 
 class PilesArea:

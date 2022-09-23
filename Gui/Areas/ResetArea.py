@@ -1,3 +1,4 @@
+"tkinter area to restart the game"
 from tkinter import Button
 
 class ResetArea():

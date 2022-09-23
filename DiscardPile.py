@@ -1,3 +1,4 @@
+"Playing card discard pile"
 from CardPile import CardPile
 
 class DiscardPile(CardPile):

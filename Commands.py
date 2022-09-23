@@ -1,3 +1,4 @@
+"tkinter widget event handler methods"
 import tkinter as tk
 
 class Commands:

@@ -1,3 +1,4 @@
+"Deck of playing cards and actions"
 import random
 from Card import Card
 

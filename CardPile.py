@@ -1,8 +1,9 @@
+"Describes a pile of playing cards"
 from Timing import Timing
 from Card import Card
 
 class CardPile:
-    "Describes a pile of playing cards"
+    "Card pile"
     def __init__(self, name):
         self.name = name
         self.cards = []
