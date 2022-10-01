@@ -17,7 +17,7 @@ class PilesArea:
         wp_lf = LabelFrame(self.piles_lf, text="Work Pile", padx=10, pady=10)
         wp_lf.grid(row=0, column=0, padx=10, pady=5)
 
-        self.root.wp_label = Label(wp_lf)
+        self.root.wp_label = Label(wp_lf, wraplength=500)
         self.root.wp_label.grid(row=1, column=0)
 
         self.root.wp_l = Label(self.piles_lf, text="Sum: 0hr. 0min.")
@@ -27,7 +27,7 @@ class PilesArea:
         "Display area: leisure area cards and sum"
         fp_lf = LabelFrame(self.piles_lf, text="Leisure Pile", padx=10, pady=10)
         fp_lf.grid(row=1, column=0, padx=10, pady=5)
-        self.root.fp_label = Label(fp_lf)
+        self.root.fp_label = Label(fp_lf, wraplength=500)
         self.root.fp_label.grid(row=2, column=0)
 
         self.root.fp_l = Label(self.piles_lf, text="Sum: 0hr. 0min.")
@@ -39,7 +39,7 @@ class PilesArea:
             self.piles_lf, text="Discard Pile", padx=10, pady=10)
         dp_lf.grid(row=2, column=0, padx=(10, 5), pady=5)
 
-        self.root.dp_label = Label(dp_lf)
+        self.root.dp_label = Label(dp_lf, wraplength=500)
         self.root.dp_label.grid(row=3, column=0)
 
         self.root.dp_l = Label(self.piles_lf, text="Sum: 0hr. 0min.")
