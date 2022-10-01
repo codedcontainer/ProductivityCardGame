@@ -13,7 +13,7 @@ class CardGame:
     def initialize(self):
         "Setup piles"
         self.deck = CardDeck()
-        self.piles = [DiscardPile(), CardPile("work"), CardPile("fun")]
+        self.piles = [DiscardPile(), CardPile("work"), CardPile("leisure")]
         self.pileMap = {}
 
         for pile in self.piles:
@@ -22,8 +22,8 @@ class CardGame:
         self.suitToPileMap = {
             "s" : self.pileMap['work'],
             "c" : self.pileMap['work'],
-            "h" : self.pileMap['fun'],
-            "d" : self.pileMap['fun']
+            "h" : self.pileMap['leisure'],
+            "d" : self.pileMap['leisure']
         }
 
 

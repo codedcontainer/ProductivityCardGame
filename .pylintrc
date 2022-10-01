@@ -22,7 +22,7 @@ ignore-patterns=
 jobs=1
 
 # Control the amount of potential inferred values when inferring a single
-# object. This can help the performance when dealing with large functions or
+# object. This can help the performance when dealing with large leisurections or
 # complex, nested conditions.
 limit-inference-results=100
 
@@ -96,14 +96,14 @@ score=yes
 
 [REFACTORING]
 
-# Maximum number of nested blocks for function / method body
+# Maximum number of nested blocks for leisurection / method body
 max-nested-blocks=5
 
-# Complete name of functions that never returns. When checking for
-# inconsistent-return-statements if a never returning function is called then
+# Complete name of leisurections that never returns. When checking for
+# inconsistent-return-statements if a never returning leisurection is called then
 # it will be considered as an explicit return statement and no message will be
 # printed.
-never-returning-functions=sys.exit
+never-returning-leisurections=sys.exit
 
 
 [BASIC]
@@ -151,16 +151,16 @@ const-naming-style=UPPER_CASE
 # style.
 #const-rgx=
 
-# Minimum line length for functions/classes that require docstrings, shorter
+# Minimum line length for leisurections/classes that require docstrings, shorter
 # ones are exempt.
 docstring-min-length=-1
 
-# Naming style matching correct function names.
-function-naming-style=snake_case
+# Naming style matching correct leisurection names.
+leisurection-naming-style=snake_case
 
-# Regular expression matching correct function names. Overrides function-
+# Regular expression matching correct leisurection names. Overrides leisurection-
 # naming-style.
-#function-rgx=
+#leisurection-rgx=
 
 # Good variable names which should always be accepted, separated by a comma.
 good-names=i,
@@ -198,7 +198,7 @@ module-naming-style=snake_case
 # the name regexes allow several styles.
 name-group=
 
-# Regular expression which should only match function or class names that do
+# Regular expression which should only match leisurection or class names that do
 # not require a docstring.
 no-docstring-rgx=^_
 
@@ -247,7 +247,7 @@ additional-builtins=
 # Tells whether unused global variables should be treated as a violation.
 allow-global-unused-variables=yes
 
-# List of strings which can identify a callback function by name. A callback
+# List of strings which can identify a callback leisurection by name. A callback
 # name must start or end with one of those strings.
 callbacks=cb_,
           _cb
@@ -327,7 +327,7 @@ missing-member-hint-distance=1
 # showing a hint for a missing member.
 missing-member-max-choices=1
 
-# List of decorators that change the signature of a decorated function.
+# List of decorators that change the signature of a decorated leisurection.
 signature-mutators=
 
 
@@ -388,7 +388,7 @@ spelling-store-unknown-words=no
 logging-format-style=old
 
 # Logging modules to check that the string format arguments are in logging
-# function parameter format.
+# leisurection parameter format.
 logging-modules=logging
 
 
@@ -457,7 +457,7 @@ valid-metaclass-classmethod-first-arg=cls
 
 [DESIGN]
 
-# Maximum number of arguments for function / method.
+# Maximum number of arguments for leisurection / method.
 max-args=5
 
 # Maximum number of attributes for a class (see R0902).
@@ -466,10 +466,10 @@ max-attributes=7
 # Maximum number of boolean expressions in an if statement (see R0916).
 max-bool-expr=5
 
-# Maximum number of branch for function / method body.
+# Maximum number of branch for leisurection / method body.
 max-branches=12
 
-# Maximum number of locals for function / method body.
+# Maximum number of locals for leisurection / method body.
 max-locals=15
 
 # Maximum number of parents for a class (see R0901).
@@ -478,10 +478,10 @@ max-parents=7
 # Maximum number of public methods for a class (see R0904).
 max-public-methods=20
 
-# Maximum number of return / yield for function / method body.
+# Maximum number of return / yield for leisurection / method body.
 max-returns=6
 
-# Maximum number of statements in function / method body.
+# Maximum number of statements in leisurection / method body.
 max-statements=50
 
 # Minimum number of public methods for a class (see R0903).

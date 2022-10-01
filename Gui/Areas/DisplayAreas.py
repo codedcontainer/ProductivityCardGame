@@ -6,7 +6,7 @@ from Areas.ResetArea import ResetArea
 
 def DisplayAreas(card_game, tk):
     "Display all areas"
-    pile_names = ["Work", "Fun"]
+    pile_names = ["Work", "Leisure"]
     PilesArea(tk)
     DiscardCardsArea(pile_names, card_game, tk)
     DrawCardsArea(pile_names, card_game, tk)

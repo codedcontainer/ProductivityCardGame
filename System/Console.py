@@ -1,4 +1,4 @@
-"Console or terminal helper functions"
+"Console or terminal helper actions"
 import os
 
 def clear():

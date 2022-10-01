@@ -7,7 +7,7 @@ class Commands:
     def print_piles(root, cg):
         "Display string array of card piles"
         root.wp_label["text"]= cg.pileMap['work'].print_cards()
-        root.fp_label["text"]= cg.pileMap['fun'].print_cards()
+        root.fp_label["text"]= cg.pileMap['leisure'].print_cards()
         root.dp_label["text"]= cg.pileMap['discard'].print_cards()
 
     @staticmethod
@@ -39,5 +39,5 @@ class Commands:
     def set_sum_times(root, cg):
         "Displays sum total time for each pile"
         root.wp_l["text"] = "Sum: " + cg.pileMap['work'].print_sum_value()
-        root.fp_l["text"] = "Sum: " + cg.pileMap['fun'].print_sum_value()
+        root.fp_l["text"] = "Sum: " + cg.pileMap['leisure'].print_sum_value()
         root.dp_l["text"] = "Sum: " + cg.pileMap['discard'].print_sum_value()

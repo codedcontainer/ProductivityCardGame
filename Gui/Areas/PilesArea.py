@@ -9,7 +9,7 @@ class PilesArea:
         self.piles_lf = LabelFrame(self.root, text="Piles")
         self.piles_lf.grid(row=0, column=0, columnspan=3, padx=20, pady=20)
         self.work_pile()
-        self.fun_pile()
+        self.leisure_pile()
         self.discard_pile()
 
     def work_pile(self):
@@ -23,9 +23,9 @@ class PilesArea:
         self.root.wp_l = Label(self.piles_lf, text="Sum: 0hr. 0min.")
         self.root.wp_l.grid(row=0, column=1)
 
-    def fun_pile(self):
+    def leisure_pile(self):
         "Display area: leisure area cards and sum"
-        fp_lf = LabelFrame(self.piles_lf, text="Fun Pile", padx=10, pady=10)
+        fp_lf = LabelFrame(self.piles_lf, text="Leisure Pile", padx=10, pady=10)
         fp_lf.grid(row=1, column=0, padx=10, pady=5)
         self.root.fp_label = Label(fp_lf)
         self.root.fp_label.grid(row=2, column=0)
