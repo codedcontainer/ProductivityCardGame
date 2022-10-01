@@ -55,10 +55,8 @@ class CardGame:
             return
         if adj_time_target <= 0:
             if len(pile.cards) > 0:
-                messagebox.showinfo(message="Target reached!")
                 return
         if pile_sum >= time_target_min:
-            messagebox.showinfo(message="Target reached!")
             return
 
         self.draw()
@@ -91,13 +89,11 @@ class CardGame:
             index += 1
         
         if pass_through and time_target > 0:
-            print("pass through")
             root.rft_tb.delete(0, END)
             root.rft_tb.insert(0, str(time_target))
             return self.remove_to_pile_target(pile, time_target, root)
 
         if time_target == 0 :
-            messagebox.showinfo(message="Cards successfully removed by target time.")
             root.rft_tb.delete(0, END)
             return
         else:
