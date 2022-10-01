@@ -10,4 +10,3 @@ def DisplayAreas(card_game, tk):
     PilesArea(tk)
     DiscardCardsArea(pile_names, card_game, tk)
     DrawCardsArea(pile_names, card_game, tk)
-    ResetArea(tk)
