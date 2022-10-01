@@ -28,7 +28,7 @@ class DrawCardsArea():
         dtt_lb = Label(dtt_lf, text="Target time(min):")
         dtt_lb.grid(row=1, column=0, padx=5, pady=5)
         self.rook.dtt_tb = Entry(dtt_lf)
-        self.rook.dtt_tb.grid(row=2, column=0)
+        self.rook.dtt_tb.grid(row=2, column=0, padx=5, pady=(0,5))
 
         dtt_om_opts = self.pile_names
         self.rook.dtt_om_var = StringVar()
