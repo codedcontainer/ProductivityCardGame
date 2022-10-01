@@ -79,12 +79,22 @@ class CardGame:
         pile.cards = pile.sort_descending()
 
         index = 0
+        pass_through = False
         for card in pile.cards:
             if time_target >= card.value:
                 time_target -= card.value
                 self.pileMap['discard'].add(pile.cards[index])
                 pile.cards.pop(index)
+                pass_through = True
+            else:
+                pass_through = False
             index += 1
+        
+        if pass_through and time_target > 0:
+            print("pass through")
+            root.rft_tb.delete(0, END)
+            root.rft_tb.insert(0, str(time_target))
+            return self.remove_to_pile_target(pile, time_target, root)
 
         if time_target == 0 :
             messagebox.showinfo(message="Cards successfully removed by target time.")
