@@ -1,5 +1,4 @@
 "tkinter widget event handler methods"
-from multiprocessing.sharedctypes import Value
 import tkinter as tk
 from tkinter import messagebox
 
