@@ -54,4 +54,4 @@ class CardPile:
         _sum_card_values = self.sum_card_values()
         self.print_cards()
         timing = Timing()
-        timing.print_time(_sum_card_values, self.name)
+        return timing.print_time(_sum_card_values, self.name)

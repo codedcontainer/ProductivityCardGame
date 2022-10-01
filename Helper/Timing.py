@@ -20,7 +20,7 @@ class Timing:
         minutes = minutes - (hours * 60)
         if minutes < 0 :
             minutes = total_minutes
-        print(pile_name + ": " + str(hours) + "hr. " + str(minutes) + "min.")
+        return str(hours) + "hr. " + str(minutes) + "min."
 
     def minutes_total(self, hours, minutes):
         "return the total number of minutes"

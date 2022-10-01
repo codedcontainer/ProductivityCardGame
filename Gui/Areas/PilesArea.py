@@ -20,8 +20,8 @@ class PilesArea:
         self.root.wp_label = Label(wp_lf)
         self.root.wp_label.grid(row=1, column=0)
 
-        wp_l = Label(self.piles_lf, text="Sum: 1hr 30m")
-        wp_l.grid(row=0, column=1)
+        self.root.wp_l = Label(self.piles_lf, text="Sum: 0hr. 0min.")
+        self.root.wp_l.grid(row=0, column=1)
 
     def fun_pile(self):
         "Display area: leisure area cards and sum"
@@ -30,8 +30,8 @@ class PilesArea:
         self.root.fp_label = Label(fp_lf)
         self.root.fp_label.grid(row=2, column=0)
 
-        fp_l = Label(self.piles_lf, text="Sum: 1hr 30m ")
-        fp_l.grid(row=1, column=1)
+        self.root.fp_l = Label(self.piles_lf, text="Sum: 0hr. 0min.")
+        self.root.fp_l.grid(row=1, column=1)
 
     def discard_pile(self):
         "Display area: discard pile cards and sum"
@@ -42,5 +42,5 @@ class PilesArea:
         self.root.dp_label = Label(dp_lf)
         self.root.dp_label.grid(row=3, column=0)
 
-        dp_l = Label(self.piles_lf, text="Sum: 1hr 30m")
-        dp_l.grid(row=2, column=1, padx=10)
+        self.root.dp_l = Label(self.piles_lf, text="Sum: 0hr. 0min.")
+        self.root.dp_l.grid(row=2, column=1, padx=10)
