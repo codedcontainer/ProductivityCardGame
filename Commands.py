@@ -1,5 +1,7 @@
 "tkinter widget event handler methods"
+from multiprocessing.sharedctypes import Value
 import tkinter as tk
+from tkinter import messagebox
 
 class Commands:
     "Event handler methods"
@@ -28,7 +30,13 @@ class Commands:
     @staticmethod
     def draw_to_target(root, cg):
         "Draw to target value"
-        target_time = int(root.dtt_tb.get())
+        target_time = 0
+        try:
+            if(root.dtt_tb.get() != ""):
+                target_time = int(root.dtt_tb.get())
+        except ValueError:
+            tk.messagebox.showinfo(message="Value must be an integer")
+        
         pile = root.dtt_om_var.get().lower()
         pile = cg.pileMap[pile]
         cg.draw_to_pile_target(pile, target_time, target_time)
@@ -38,18 +46,22 @@ class Commands:
     @staticmethod
     def remove_to_target(root, cg):
         "Remove to target value"
-        target_time = int(root.rft_tb.get())
+        target_time = 0
+        try:
+            if(root.rft_tb.get() != ""):
+                target_time = int(root.rft_tb.get())
+        except ValueError:
+            tk.messagebox.showinfo(message="Value must be an integer")
+  
         pile = root.rbt_om_var.get().lower()
         pile = cg.pileMap[pile]
         cg.remove_to_pile_target(pile, target_time, root)
         Commands.print_piles(root,cg)
         Commands.set_sum_times(root,cg)
 
-
-
     @staticmethod
     def set_sum_times(root, cg):
         "Displays sum total time for each pile"
-        root.wp_l["text"] = "Sum: " + cg.pileMap['work'].print_sum_value()
-        root.fp_l["text"] = "Sum: " + cg.pileMap['leisure'].print_sum_value()
-        root.dp_l["text"] = "Sum: " + cg.pileMap['discard'].print_sum_value()
+        root.wp_l["text"] = "Sum: " + cg.pileMap['work'].print_sum_value
+        root.fp_l["text"] = "Sum: " + cg.pileMap['leisure'].print_sum_value
+        root.dp_l["text"] = "Sum: " + cg.pileMap['discard'].print_sum_value

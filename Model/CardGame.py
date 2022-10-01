@@ -1,18 +1,19 @@
-"Productivity card game"
-from email import message
+"""Productivity card game"""
+
 from Model.CardDeck import CardDeck
 from Model.CardPile import CardPile
 from Model.DiscardPile import DiscardPile
+import tkinter as tk
 from tkinter import messagebox
 from tkinter import END
 
-class CardGame:
-    "Card game"
-    def __init__(self):
-        self.initialize()
 
-    def initialize(self):
-        "Setup piles"
+
+class CardGame:
+    """Card game"""
+    def __init__(self, tk):
+        """Setup piles"""
+        self.tk = tk
         self.deck = CardDeck()
         self.piles = [DiscardPile(), CardPile("work"), CardPile("leisure")]
         self.pileMap = {}
@@ -21,37 +22,37 @@ class CardGame:
             self.pileMap[pile.name] = pile
 
         self.suitToPileMap = {
-            "s" : self.pileMap['work'],
-            "c" : self.pileMap['work'],
-            "h" : self.pileMap['leisure'],
-            "d" : self.pileMap['leisure']
+            "s": self.pileMap['work'],
+            "c": self.pileMap['work'],
+            "h": self.pileMap['leisure'],
+            "d": self.pileMap['leisure']
         }
 
     def draw(self):
-        "Draw a card"
+        """Draw a card"""
         if len(self.deck.cards) > 0:
-            card = self.deck.draw()
-            
-            if card.suit == "j" :
+            card = self.deck.draw
+
+            if card.suit == "j":
                 self.deck.discard_joker()
                 self.deck.append_pile(self.pileMap['discard'])
                 self.deck.shuffle()
             else:
                 self.suitToPileMap[card.suit].cards.append(card)
         else:
-            messagebox.showwarning(message="Cannot draw any more cards; deck is empty")
+            tk.messagebox.showwarning(message="Cannot draw any more cards; deck is empty")
 
-    def printPiles(self):
-        "Print the the sum value of the piles"
+    def print_piles(self):
+        """Print the sum value of the piles"""
         for pile in self.piles:
             pile.print_sum_value()
 
     def draw_to_pile_target(self, pile, time_target_min, adj_time_target):
-        "Draw cards to a target value in minutes"
+        """Draw cards to a target value in minutes"""
         pile_sum = pile.sum_card_values()
-        
-        if len(self.deck.cards) == 0 :
-            messagebox.showwarning(message="Cannot draw any more cards; deck is empty")
+
+        if len(self.deck.cards) == 0:
+            tk.messagebox.showwarning(message="Cannot draw any more cards; deck is empty")
             return
         if adj_time_target <= 0:
             if len(pile.cards) > 0:
@@ -64,14 +65,14 @@ class CardGame:
         drawn_card_value = 0
 
         if len(pile_cards) != 0:
-            drawn_card_value = int(pile_cards[len(pile_cards)-1].value)
+            drawn_card_value = int(pile_cards[len(pile_cards) - 1].value)
 
         return self.draw_to_pile_target(pile, time_target_min, time_target_min - drawn_card_value)
 
-    def remove_to_pile_target(self,pile,time_target,root):
-        "Remove cards to a target value in minutes"
+    def remove_to_pile_target(self, pile, time_target, root):
+        """Remove cards to a target value in minutes"""
         if len(pile.cards) == 0:
-            messagebox.showinfo(message="No cards in pile to remove")
+            tk.messagebox.showinfo(message="No cards in pile to remove")
             return
 
         pile.cards = pile.sort_descending()
@@ -87,17 +88,18 @@ class CardGame:
             else:
                 pass_through = False
             index += 1
-        
+
         if pass_through and time_target > 0:
             root.rft_tb.delete(0, END)
             root.rft_tb.insert(0, str(time_target))
             return self.remove_to_pile_target(pile, time_target, root)
 
-        if time_target == 0 :
+        if time_target == 0:
             root.rft_tb.delete(0, END)
             return
         else:
-            messagebox.showwarning(message=f"Excess time: {time_target} min; no other cards can be removed to reach target.")
+            tk.messagebox.showwarning(
+                message=f"Excess time: {time_target} min; no other cards can be removed to reach target.")
             root.rft_tb.delete(0, END)
             root.rft_tb.insert(0, str(time_target))
             return
