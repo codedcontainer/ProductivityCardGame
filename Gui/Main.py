@@ -7,6 +7,7 @@ from Model.CardGame import CardGame
 
 tk = Tk()
 tk.title("Productivity Card Game")
+tk.resizable(False, False)
 
 card_game = CardGame()
 DisplayAreas(card_game, tk)
