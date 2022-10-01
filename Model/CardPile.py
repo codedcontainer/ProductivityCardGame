@@ -1,6 +1,6 @@
 "Describes a pile of playing cards"
-from Timing import Timing
-from Card import Card
+from Helper.Timing import Timing
+from Model.Card import Card
 
 class CardPile:
     "Card pile"

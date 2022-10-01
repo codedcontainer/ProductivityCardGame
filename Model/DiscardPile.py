@@ -1,5 +1,5 @@
 "Playing card discard pile"
-from CardPile import CardPile
+from Model.CardPile import CardPile
 
 class DiscardPile(CardPile):
     "discard pile"

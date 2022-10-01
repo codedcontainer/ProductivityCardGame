@@ -1,6 +1,6 @@
 "Deck of playing cards and actions"
 import random
-from Card import Card
+from Model.Card import Card
 
 class CardDeck:
     "Standard deck of cards (52 cards); draw pile"
@@ -21,7 +21,8 @@ class CardDeck:
     def add_joker(self, amount):
         "Creates and adds x number of jokers to the deck"
         joker_list = [Card(0, "j") for joker in range(1, amount + 1)]
-        self.cards.append(joker_list)
+        self.cards = self.cards + joker_list
+        print(self.cards)
 
     def discard_joker(self):
         "Removes joker card from deck"
@@ -42,7 +43,7 @@ class CardDeck:
     def append_pile(self, pile):
         "Appends a pile to the deck and removes all cards from that pile"
         if len(pile.cards) > 0:
-            self.cards += pile
+            self.cards += pile.cards
             pile.empty()
 
     def draw(self):

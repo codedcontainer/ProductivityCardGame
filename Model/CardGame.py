@@ -1,9 +1,9 @@
 "Productivity card game"
 
-from CardDeck import CardDeck
-from CardPile import CardPile
-from DiscardPile import DiscardPile
-import Console
+from Model.CardDeck import CardDeck
+from Model.CardPile import CardPile
+from Model.DiscardPile import DiscardPile
+import System.Console as Console
 
 class CardGame:
     "Card game"
@@ -31,8 +31,10 @@ class CardGame:
         "Draw a card"
         if len(self.deck.cards) > 0:
             card = self.deck.draw()
+            print(card, card.value)
             if card.suit == "j" :
                 self.deck.discard_joker()
+                print(self.pileMap['discard'])
                 self.deck.append_pile(self.pileMap['discard'])
             else:
                 self.suitToPileMap[card.suit].cards.append(card)
