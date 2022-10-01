@@ -42,14 +42,15 @@ class DiscardCardsArea():
 
         rft_lb = Label(tbt_lf, text="Target time(min):")
         rft_lb.grid(row=1, column=1, padx=5, pady=5)
-        rft_tb = Entry(tbt_lf)
-        rft_tb.grid(row=2, column=1,padx=5, pady=(0,5))
+        self.tk.rft_tb = Entry(tbt_lf)
+        self.tk.rft_tb.grid(row=2, column=1,padx=5, pady=(0,5))
 
         rbt_om_opts = self.pile_names
-        rbt_om_var = StringVar()
-        rbt_om_var.set(rbt_om_opts[0])
-        rbt_om = OptionMenu(tbt_lf, rbt_om_var, *rbt_om_opts)
+        self.tk.rbt_om_var = StringVar()
+        self.tk.rbt_om_var.set(rbt_om_opts[0])
+        rbt_om = OptionMenu(tbt_lf, self.tk.rbt_om_var, *rbt_om_opts)
         rbt_om.grid(row=3, column=1)
 
-        rft_btn = Button(tbt_lf, text="Remove by target")
+        rft_btn = Button(tbt_lf, text="Remove by target",
+        command=lambda: Commands.remove_to_target(self.tk, self.card_game))
         rft_btn.grid(row=4, column=1,padx=5, pady=(10,5))

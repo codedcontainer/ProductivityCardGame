@@ -36,6 +36,19 @@ class Commands:
         Commands.set_sum_times(root, cg)
 
     @staticmethod
+    def remove_to_target(root, cg):
+        "Remove to target value"
+        target_time = int(root.rft_tb.get())
+        pile = root.rbt_om_var.get().lower()
+        print(root)
+        pile = cg.pileMap[pile]
+        cg.remove_to_pile_target(pile, target_time, root)
+        Commands.print_piles(root,cg)
+        Commands.set_sum_times(root,cg)
+
+
+
+    @staticmethod
     def set_sum_times(root, cg):
         "Displays sum total time for each pile"
         root.wp_l["text"] = "Sum: " + cg.pileMap['work'].print_sum_value()
