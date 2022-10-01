@@ -30,10 +30,11 @@ class CardGame:
         "Draw a card"
         if len(self.deck.cards) > 0:
             card = self.deck.draw()
-            print(card, card.value)
+            
             if card.suit == "j" :
                 self.deck.discard_joker()
                 self.deck.append_pile(self.pileMap['discard'])
+                self.deck.shuffle()
             else:
                 self.suitToPileMap[card.suit].cards.append(card)
         else:
@@ -44,18 +45,26 @@ class CardGame:
         for pile in self.piles:
             pile.print_sum_value()
 
-    def draw_to_pile_target(self, pile, time_target_min):
+    def draw_to_pile_target(self, pile, time_target_min, adj_time_target):
         "Draw cards to a target value in minutes"
         pile_sum = pile.sum_card_values()
+        
         if len(self.deck.cards) == 0 :
             messagebox.showwarning(message="Cannot draw any more cards; deck is empty")
-        if time_target_min <= 0:
+            return
+        if adj_time_target <= 0:
             if len(pile.cards) > 0:
-                print('target reached')
                 messagebox.showinfo(message="Target reached!")
+                return
         if pile_sum >= time_target_min:
-            return "Target reached!"
+            return
 
         drawn_card = self.deck.draw()
-        pile.add(drawn_card)
-        return self.draw_to_pile_target(pile, time_target_min - int(drawn_card.value))
+        if drawn_card.suit == "j" :
+                self.deck.discard_joker()
+                self.deck.append_pile(self.pileMap['discard'])
+                self.deck.shuffle()
+        else:
+            pile.add(drawn_card)
+
+        return self.draw_to_pile_target(pile, time_target_min, time_target_min - int(drawn_card.value))

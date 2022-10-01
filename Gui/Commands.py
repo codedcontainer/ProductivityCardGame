@@ -29,6 +29,5 @@ class Commands:
         target_time = int(root.dtt_tb.get())
         pile = root.dtt_om_var.get().lower()
         pile = cg.pileMap[pile]
-        dtpt_state = cg.draw_to_pile_target(pile, target_time)
-        tk.messagebox.showinfo(title=None, message=dtpt_state)
+        cg.draw_to_pile_target(pile, target_time, target_time)
         Commands.print_piles(root,cg)
