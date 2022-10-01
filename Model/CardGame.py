@@ -1,4 +1,5 @@
 "Productivity card game"
+from email import message
 from Model.CardDeck import CardDeck
 from Model.CardPile import CardPile
 from Model.DiscardPile import DiscardPile
@@ -57,14 +58,14 @@ class CardGame:
                 messagebox.showinfo(message="Target reached!")
                 return
         if pile_sum >= time_target_min:
+            messagebox.showinfo(message="Target reached!")
             return
 
-        drawn_card = self.deck.draw()
-        if drawn_card.suit == "j" :
-                self.deck.discard_joker()
-                self.deck.append_pile(self.pileMap['discard'])
-                self.deck.shuffle()
-        else:
-            pile.add(drawn_card)
+        self.draw()
+        pile_cards = self.pileMap[pile.name].cards
+        drawn_card_value = 0
 
-        return self.draw_to_pile_target(pile, time_target_min, time_target_min - int(drawn_card.value))
+        if len(pile_cards) != 0:
+            drawn_card_value = int(pile_cards[len(pile_cards)-1].value)
+
+        return self.draw_to_pile_target(pile, time_target_min, time_target_min - drawn_card_value)
