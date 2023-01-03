@@ -4,6 +4,7 @@
 ## Run
 Either file can be renamed without effecting the execution of the file.
 - linux: `cd` dist directory and run `./Main`
+  - Make file executable first
 - windows: open dist directory and double click .exe file
 
 ## Testing
